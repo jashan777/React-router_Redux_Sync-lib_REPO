@@ -1,15 +1,16 @@
-import { INCREASE, DECREASE } from '../constants'
+import { INCREASE, DECREASE } from "../constants";
 
 const initialState = {
-  number: 1
-}
+  number: 1,
+};
 
 export default function update(state = initialState, action) {
-  if(action.type === INCREASE) {
-    return { number: state.number + action.amount }
+  switch (action.type) {
+    case INCREASE:
+      return { ...state, number: state.number + action.amount };
+    case DECREASE:
+      return { ...state, number: state.number - action.amount };
+    default:
+      return state;
   }
-  else if(action.type === DECREASE) {
-    return { number: state.number - action.amount }
-  }
-  return state
 }

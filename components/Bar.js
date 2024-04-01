@@ -1,5 +1,5 @@
-import React from 'react'
+import React from "react";
 
-export default function Bar() {
-  return <div>And I am Bar!</div>
-}
+const Bar = () => <div>And I am Bar!</div>;
+
+export default Bar;

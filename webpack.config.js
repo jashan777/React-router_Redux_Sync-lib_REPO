@@ -1,35 +1,32 @@
 /* eslint-disable */
-const path = require('path');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const babelLoader = {
+  test: /\.m?js$/,
+  exclude: [/node_modules/],
+  use: [
+    {
+      loader: "babel-loader",
+    },
+  ],
+};
 
 module.exports = {
-  entry: './app.js',
+  entry: "./app.js",
+  mode: "development",
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, "dist"),
+    filename: "bundle.js",
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loader: 'babel',
-      exclude: /node_modules/,
-      include: __dirname
-    }]
-  }
-}
-
-
-
-// This will make the redux-simpler-router module resolve to the
-// latest src instead of using it from npm. Remove this if running
-// outside of the source.
-var src = path.join(__dirname, '..', '..', 'src')
-var fs = require('fs')
-if (fs.existsSync(src)) {
-  // Use the latest src
-  module.exports.resolve = { alias: { 'react-router-redux': src } }
-  module.exports.module.loaders.push({
-    test: /\.js$/,
-    loaders: ['babel'],
-    include: src
-  });
-}
+    rules: [babelLoader],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html", // Path to your template file
+      filename: "index.html", // Output file name (relative to the output.path set above)
+      inject: true, // All assets will be injected into the template
+    }),
+  ],
+};

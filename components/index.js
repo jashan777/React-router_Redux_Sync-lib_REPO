@@ -1,4 +1,6 @@
-export App from './App'
-export Home from './Home'
-export Foo from './Foo'
-export Bar from './Bar'
+import App from "./App";
+import Home from "./Home";
+import Foo from "./Foo";
+import Bar from "./Bar";
+
+export { App, Home, Foo, Bar };

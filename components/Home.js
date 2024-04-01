@@ -1,19 +1,19 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { increase, decrease } from '../actions/count'
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increase, decrease } from "../actions/count";
 
-function Home({ number, increase, decrease }) {
+function Home() {
+  const number = useSelector((state) => state.count.number); // Access state with useSelector
+  const dispatch = useDispatch(); // Dispatch actions with useDispatch
+
   return (
     <div>
       Some state changes:
       {number}
-      <button onClick={() => increase(1)}>Increase</button>
-      <button onClick={() => decrease(1)}>Decrease</button>
+      <button onClick={() => dispatch(increase(1))}>Increase</button>
+      <button onClick={() => dispatch(decrease(1))}>Decrease</button>
     </div>
-  )
+  );
 }
 
-export default connect(
-  state => ({ number: state.count.number }),
-  { increase, decrease }
-)(Home)
+export default Home;
