@@ -5,10 +5,15 @@
   "license": "MIT",
   "dependencies": {
     "react": "^17.0.2",
+    "history": "5.3.0",
     "react-dom": "^17.0.2",
     "react-redux": "^8.0.0",
     "react-router": "^6.22.3",
-    "react-router-dom": "6.22.3",
+    "react-router-dom": "^6.22.3",
+    "@redux-devtools/core": "4.0.0",
+    "@redux-devtools/log-monitor": "5.0.0",
+    "@redux-devtools/dock-monitor": "4.0.0",
+    "redux-first-history": "5.2.0",
     "redux": "^5.0.1",
     "react-router-redux": "^4.0.8"
   },

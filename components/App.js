@@ -1,8 +1,15 @@
 import React from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { push } from "redux-first-history";
+import { useDispatch } from "react-redux";
 
 export default function App() {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleNavigate = () => {
+    // Dispatch the navigation event through redux
+    dispatch(push("/foo"));
+  };
 
   return (
     <div>
@@ -11,7 +18,7 @@ export default function App() {
         <Link to="/bar">Bar</Link>
       </header>
       <div>
-        <button onClick={() => navigate("/foo")}>Go to /foo</button>
+        <button onClick={handleNavigate}>Go to /foo</button>
       </div>
       {/* The Outlet component will render the matched child route component. */}
       <div style={{ marginTop: "1.5em" }}>
